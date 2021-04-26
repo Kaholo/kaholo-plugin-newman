@@ -17,7 +17,13 @@ async function runCollection(action, settings) {
     return new Promise((resolve, reject) => {
         newman.run(opts, function (err, summary) {
             if (err) reject(err); 
-            resolve(summary);
+            const execs = summary.run.executions;
+            execs.forEach(execution => {
+                if (execution.hasOwnProperty("requestError")){
+                    return reject(summary);
+                }
+            })
+            return resolve(summary);
         });
     });
 }

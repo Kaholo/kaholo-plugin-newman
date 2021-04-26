@@ -3,13 +3,14 @@ function parseVars(vars){
         return {};
     }
     if (typeof(vars) === "object"){
-        return vars;
+        return Object.entries(vars).map(function(key, value){
+            return {"key": key, "value": value};
+        })
     }
     if (typeof(vars) !== "string"){
         throw "variables must be of type string or object!";
     }
-    const varObj = {};
-    vars.split("\n").forEach((line) => {
+    return vars.split("\n").map(function(line){
         let [key, ...val] = line.split("=");
         if (!val){
             throw "Bad Key=Value format!";
@@ -17,9 +18,8 @@ function parseVars(vars){
         if (Array.isArray(val)){
             val = val.join("=");
         }
-        varObj[key.trim()] = val.trim();
+        return {"key": key.trim(), "value": val.trim()};
     });
-    return varObj;
 }
 
 module.exports = {
