@@ -1,0 +1,37 @@
+{
+  "name": "Newman-Plugin",
+  "type": "executer",
+  "imgUrl": "logo.png",
+  "execProgram": "node",
+  "main": "app.js",
+  "version": "1.0.0",
+  "description": "Run postman collections using Newman.",
+  "methods": [
+    {
+      "name": "runCollection",
+      "viewName": "Run Collection",
+      "params": [
+        {
+          "name": "collection",
+          "viewName": "Collection",
+          "type": "string"
+        },
+        {
+          "name": "envVars",
+          "viewName": "Enviroment Variables",
+          "type": "text"
+        },
+        {
+          "name": "globalVars",
+          "viewName": "Global Variables",
+          "type": "text"
+        },
+        {
+          "name": "options",
+          "viewName": "Options",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}
