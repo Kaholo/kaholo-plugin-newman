@@ -4,6 +4,7 @@ const newman = require('newman');
 async function runCollection(action, settings) {
     let opts = {
         collection: action.params.collection,
+        environment: action.params.postmanEnvironment,
         envVar: parseVars(action.params.envVars),
         globalVar: parseVars(action.params.globalVars)
     }

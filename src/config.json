@@ -4,7 +4,7 @@
   "imgUrl": "logo.png",
   "execProgram": "node",
   "main": "app.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Run postman collections using Newman.",
   "methods": [
     {
@@ -14,6 +14,11 @@
         {
           "name": "collection",
           "viewName": "Collection",
+          "type": "string"
+        },
+        {
+          "name": "postmanEnvironment",
+          "viewName": "Enviroment (Object)",
           "type": "string"
         },
         {
