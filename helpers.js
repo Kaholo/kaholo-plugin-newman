@@ -1,27 +1,26 @@
-function parseVars(vars){
-    if (!vars){
-        return {};
+function parseVars(vars) {
+  if (!vars) {
+    return {};
+  }
+  if (typeof (vars) === "object") {
+    return Object.entries(vars).map((key, value) => ({ key, value }));
+  }
+  if (typeof (vars) !== "string") {
+    throw new Error("variables must be of type string or object!");
+  }
+  return vars.split("\n").map((line) => {
+    let segments = line.split("=");
+    const key = segments.shift();
+    if (!segments) {
+      throw new Error("Bad Key=Value format!");
     }
-    if (typeof(vars) === "object"){
-        return Object.entries(vars).map(function(key, value){
-            return {"key": key, "value": value};
-        })
+    if (Array.isArray(segments)) {
+      segments = segments.join("=");
     }
-    if (typeof(vars) !== "string"){
-        throw "variables must be of type string or object!";
-    }
-    return vars.split("\n").map(function(line){
-        let [key, ...val] = line.split("=");
-        if (!val){
-            throw "Bad Key=Value format!";
-        }
-        if (Array.isArray(val)){
-            val = val.join("=");
-        }
-        return {"key": key.trim(), "value": val.trim()};
-    });
+    return { key: key.trim(), value: segments.trim() };
+  });
 }
 
 module.exports = {
-    parseVars
+  parseVars,
 };
