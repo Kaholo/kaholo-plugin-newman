@@ -1,11 +1,26 @@
 {
   "name": "Newman-Plugin",
-  "type": "executer",
-  "imgUrl": "logo.png",
-  "execProgram": "node",
-  "main": "app.js",
+  "viewName": "Newman",
   "version": "2.0.0",
-  "description": "Run postman collections using Newman.",
+  "type": "executer",
+  "execProgram": "node",
+  "imgUrl": "logo.png",
+  "main": "app.js",
+  "description": "Automated API Testing for Postman",
+  "category": [
+    "Testing"
+  ],
+  "keywords": [
+    "newman",
+    "cli",
+    "postman",
+    "api",
+    "http",
+    "https",
+    "collection",
+    "rest",
+    "testing"
+  ],
   "methods": [
     {
       "name": "runCollection",
@@ -14,30 +29,47 @@
         {
           "name": "collection",
           "viewName": "Collection",
-          "type": "string"
+          "type": "string",
+          "description": "Path to a collection JSON file",
+          "placeholder": "coreapiv2/postman/coreapi.postman_collection.json",
+          "learnUrl": "https://learning.postman.com/docs/running-collections/running-collections-overview/",
+          "required": true
         },
         {
           "name": "postmanEnvironment",
           "viewName": "Enviroment",
-          "type": "string"
+          "type": "string",
+          "description": "Postman environment for the test",
+          "placeholder": "QA Env 01",
+          "learnUrl": "https://learning.postman.com/docs/sending-requests/managing-environments/",
+          "required": false
         },
         {
           "name": "envVars",
           "viewName": "Enviroment Variables",
-          "type": "text"
+          "type": "text",
+          "description": "One-per-line KEY=value pairs (or JSON Object) to use as Postman Environment Variables",
+          "placeholder": "URL=http://10.52.3.7/",
+          "required": false
         },
         {
           "name": "globalVars",
           "viewName": "Global Variables",
-          "type": "text"
+          "type": "text",
+          "description": "One-per-line KEY=value pairs (or JSON Object) to use as Postman Global Variables",
+          "placeholder": "",
+          "required": false
         },
         {
           "name": "options",
           "viewName": "Options",
-          "type": "string"
+          "type": "string",
+          "description": "An optional JSON object with options in addition to those specified above",
+          "placeholder": "use code layer, see README.md",
+          "learnUrl": "https://www.npmjs.com/package/newman#api-reference",
+          "required": false
         }
       ]
     }
-  ],
-  "category": "TESTING"
+  ]
 }
